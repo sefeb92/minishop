@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail - Mini Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-bag-shopping"></i> Mini Shop
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html" class="active">Products</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-search">
+                <input type="text" id="searchInput" placeholder="Search products...">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-outline" style="border:none"><i class="fa-regular fa-heart"></i></button>
+                <button class="btn btn-outline" style="border:none"><i class="fa-solid fa-cart-shopping"></i>
+                    (2)</button>
+                <button class="btn btn-outline" onclick="window.location.href='login.html'">Login</button>
+                <button class="btn btn-primary" onclick="window.location.href='register.html'">Register</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container page-layout">
+        <div class="breadcrumb" id="breadcrumb">
+            Home &gt; Products &gt; <span class="current" id="bc-name">Product Name</span>
+        </div>
+
+        <div class="product-detail-container" id="productDetailContainer">
+            <!-- Rendered by JS -->
+            <div style="text-align:center; padding: 50px;">Loading product...</div>
+        </div>
+
+        <!-- Related Products -->
+        <section class="related-products">
+            <h3 class="section-title">Related Products</h3>
+            <div class="products-grid" id="relatedProductsGrid">
+                <!-- Rendered by JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">&copy; 2025 Mini Shop. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script src="data/products.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get('id')) || 1; // Default to 1
+
+            const product = products.find(p => p.id === productId);
+            if (!product) {
+                document.getElementById('productDetailContainer').innerHTML = 'Product not found.';
+                return;
+            }
+
+            document.getElementById('bc-name').textContent = product.name;
+            document.title = `${product.name} - Mini Shop`;
+
+            // Render details
+            const detailHTML = `
+                <div class="pd-gallery">
+                    <div class="pd-thumbnails">
+                        <img src="${product.image}" class="active">
+                        <img src="${product.image}">
+                        <img src="${product.image}">
+                        <img src="${product.image}">
+                    </div>
+                    <div class="pd-main-img">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                </div>
+                <div class="pd-info">
+                    <div class="pd-badge">In Stock</div>
+                    <div class="pd-category">${product.categoryName}</div>
+                    <h1 class="pd-title">${product.name}</h1>
+                    <div class="pd-reviews">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        <span>(48 reviews)</span>
+                    </div>
+                    <div class="pd-prices">
+                        <span class="pd-price">${formatCurrency(product.price)}</span>
+                        <span class="pd-old-price">${formatCurrency(product.price * 1.2)}</span>
+                        <span class="pd-discount">-20%</span>
+                    </div>
+                    <p class="pd-desc">${product.description}. Elegant design perfect for modern home decoration.</p>
+                    
+                    <div class="pd-actions">
+                        <div class="pd-quantity">
+                            <button>-</button>
+                            <input type="text" value="1">
+                            <button>+</button>
+                        </div>
+                        <button class="btn-cta pd-add-cart"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+                        <button class="btn btn-outline pd-wishlist"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+
+                    <div class="pd-features">
+                        <div><i class="fa-solid fa-truck"></i> Free Delivery</div>
+                        <div><i class="fa-solid fa-rotate-left"></i> 30-Day Returns</div>
+                        <div><i class="fa-solid fa-shield"></i> Secure Payment</div>
+                    </div>
+                </div>
+                <div class="pd-extra">
+                    <div class="pd-box">
+                        <h3>Detail</h3>
+                        <ul class="pd-specs">
+                            <li><span>Material</span><span>Premium quality</span></li>
+                            <li><span>Color</span><span>Natural</span></li>
+                            <li><span>Weight</span><span>1.2 kg</span></li>
+                            <li><span>Made in</span><span>Vietnam</span></li>
+                        </ul>
+                    </div>
+                    <div class="pd-box">
+                        <h3>Delivery</h3>
+                        <ul class="pd-specs">
+                            <li>Delivery time: 2-5 working days</li>
+                            <li>Express delivery: 1-2 working days</li>
+                            <li>Shipping fee: 30,000 VND</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+            document.getElementById('productDetailContainer').innerHTML = detailHTML;
+
+            // Render related products (just 4 random/related)
+            const relatedGrid = document.getElementById('relatedProductsGrid');
+            const related = products.filter(p => p.id !== productId).slice(0, 4);
+            related.forEach(p => {
+                relatedGrid.innerHTML += `
+                    <div class="product-card" onclick="window.location.href='product-detail.html?id=${p.id}'" style="cursor:pointer">
+                        <img src="${p.image}" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-name">${p.name}</h3>
+                            <div class="product-price">${formatCurrency(p.price)}</div>
+                        </div>
+                    </div>
+                `;
+            });
+        });
+    </script>
+</body>
+
+</html>

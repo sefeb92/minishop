@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Shop - Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <i class="fa-solid fa-bag-shopping"></i> Mini Shop
+        </div>
+        <div class="nav-menu">
+            <a class="nav-item active" id="nav-dashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
+            <a class="nav-item" id="nav-products"><i class="fa-solid fa-box"></i> Products</a>
+            <a class="nav-item"><i class="fa-solid fa-tags"></i> Categories</a>
+            <a class="nav-item"><i class="fa-solid fa-cart-shopping"></i> Orders</a>
+            <a class="nav-item"><i class="fa-solid fa-users"></i> Users</a>
+            <a class="nav-item"><i class="fa-solid fa-gear"></i> Settings</a>
+        </div>
+        <div class="sidebar-footer">
+            <a href="../index.html" class="nav-item" style="padding:0"><i class="fa-solid fa-arrow-right-from-bracket"></i> Back to Store</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="top-bar">
+            <div style="font-weight: 600; font-size: 1.2rem;">Dashboard</div>
+            <div class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search...">
+            </div>
+            <div class="user-profile">
+                <i class="fa-regular fa-bell" style="font-size: 1.2rem; color: #6b7280; cursor:pointer;"></i>
+                <div class="avatar">A</div>
+                <span style="font-weight: 500;">Admin <i class="fa-solid fa-chevron-down" style="font-size:0.8rem"></i></span>
+            </div>
+        </header>
+
+        <div class="content-area">
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h4>Total products</h4>
+                        <div class="number">12</div>
+                    </div>
+                    <div class="stat-icon icon-green"><i class="fa-solid fa-bag-shopping"></i></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h4>Categories</h4>
+                        <div class="number">3</div>
+                    </div>
+                    <div class="stat-icon icon-blue"><i class="fa-regular fa-folder-open"></i></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h4>Visible products</h4>
+                        <div class="number">12</div>
+                    </div>
+                    <div class="stat-icon icon-yellow"><i class="fa-regular fa-eye"></i></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h4>Low stock</h4>
+                        <div class="number">0</div>
+                    </div>
+                    <div class="stat-icon icon-red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                </div>
+            </div>
+
+            <!-- Two columns layout -->
+            <div class="grid-layout">
+                
+                <!-- Left Column -->
+                <div>
+                    <!-- Product List -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Products List</h3>
+                            <div class="search-bar" style="width: 200px;">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" placeholder="Search products...">
+                            </div>
+                        </div>
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Product Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminProductsBody">
+                                <!-- Rendered by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Categories List -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Categories</h3>
+                            <button class="btn btn-primary" style="padding: 5px 15px; font-size: 0.9rem;">+ Add category</button>
+                        </div>
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Category Name</th>
+                                    <th>Products</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Đồ thủ công</td>
+                                    <td>4</td>
+                                    <td><span class="status-badge status-active">● Active</span></td>
+                                    <td>
+                                        <button class="action-btn"><i class="fa-solid fa-pen"></i></button>
+                                        <button class="action-btn"><i class="fa-solid fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Đồ mỹ nghệ</td>
+                                    <td>4</td>
+                                    <td><span class="status-badge status-active">● Active</span></td>
+                                    <td>
+                                        <button class="action-btn"><i class="fa-solid fa-pen"></i></button>
+                                        <button class="action-btn"><i class="fa-solid fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Nội thất & gia dụng</td>
+                                    <td>4</td>
+                                    <td><span class="status-badge status-active">● Active</span></td>
+                                    <td>
+                                        <button class="action-btn"><i class="fa-solid fa-pen"></i></button>
+                                        <button class="action-btn"><i class="fa-solid fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Right Column: Form -->
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Product Form</h3>
+                        </div>
+                        <form onsubmit="event.preventDefault(); alert('Thêm sản phẩm thành công!');">
+                            <div class="form-group">
+                                <label>Product name</label>
+                                <input type="text" class="form-control" placeholder="Enter product name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select class="form-control" required>
+                                    <option>Đồ thủ công</option>
+                                    <option>Đồ mỹ nghệ</option>
+                                    <option>Nội thất & gia dụng</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Price (đ)</label>
+                                <input type="number" class="form-control" placeholder="Enter price" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Image</label>
+                                <div class="image-upload-box">
+                                    <i class="fa-regular fa-image" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                                    <p>Click to upload image</p>
+                                    <p style="font-size: 0.8rem;">PNG, JPG up to 2MB</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select class="form-control">
+                                    <option>Active</option>
+                                    <option>Draft</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control" rows="3" placeholder="Enter product description"></textarea>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button type="submit" class="btn btn-primary" style="flex:1">Save</button>
+                                <button type="button" class="btn btn-outline" style="flex:1">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Load data -->
+    <script src="../data/products.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

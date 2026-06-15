@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Mini Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-bag-shopping"></i>
+                Mini Shop
+            </a>
+            
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html" class="active">Products</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <div class="header-search">
+                <input type="text" id="searchInput" placeholder="Search products...">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+            <div class="header-actions">
+                <button class="btn btn-outline" style="border:none"><i class="fa-regular fa-heart"></i> Wishlist</button>
+                <button class="btn btn-outline" style="border:none"><i class="fa-solid fa-cart-shopping"></i> Cart (2)</button>
+                <button class="btn btn-outline" onclick="window.location.href='login.html'">Login</button>
+                <button class="btn btn-primary" onclick="window.location.href='register.html'">Register</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container page-layout">
+        <div class="breadcrumb">
+            Home &gt; <span class="current">Products</span>
+        </div>
+        
+        <div class="shop-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar-filters">
+                <div class="filter-group">
+                    <h3 class="filter-title">Categories</h3>
+                    <ul class="filter-list" id="sidebarCategoryList">
+                        <li class="active" data-category="all">
+                            <span><i class="fa-solid fa-border-all"></i> All Products</span>
+                            <span class="count">12</span>
+                        </li>
+                        <li data-category="noi-that-gia-dung">
+                            <span><i class="fa-solid fa-couch"></i> Nội thất</span>
+                            <span class="count">4</span>
+                        </li>
+                        <li data-category="do-thu-cong">
+                            <span><i class="fa-solid fa-hand-sparkles"></i> Đồ thủ công</span>
+                            <span class="count">4</span>
+                        </li>
+                        <li data-category="do-my-nghe">
+                            <span><i class="fa-solid fa-palette"></i> Đồ mỹ nghệ</span>
+                            <span class="count">4</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="filter-group">
+                    <h3 class="filter-title">Price</h3>
+                    <ul class="filter-list price-filter">
+                        <li class="active"><input type="radio" name="price" checked> All Price</li>
+                        <li><input type="radio" name="price"> Under 500,000đ</li>
+                        <li><input type="radio" name="price"> 500,000đ - 2,000,000đ</li>
+                        <li><input type="radio" name="price"> Over 2,000,000đ</li>
+                    </ul>
+                </div>
+
+                <div class="filter-group">
+                    <h3 class="filter-title">Availability</h3>
+                    <ul class="filter-list">
+                        <li><input type="checkbox" checked> In stock (12)</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Products Area -->
+            <div class="products-area">
+                <div class="products-header">
+                    <h2>Products</h2>
+                    <div class="products-meta">
+                        <span>Showing 1-12 of 12 products</span>
+                        <div class="sort-by">
+                            Sort by: 
+                            <select>
+                                <option>Newest</option>
+                                <option>Price: Low to High</option>
+                                <option>Price: High to Low</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be rendered here by JS -->
+                </div>
+
+                <div class="load-more-container">
+                    <button class="btn btn-outline"><i class="fa-solid fa-rotate-right"></i> Load more</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- ... Footer from index.html ... -->
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        Mini Shop
+                    </div>
+                    <p class="footer-desc">Đồ dùng & trang trí cho cuộc sống tiện nghi và phong cách.</p>
+                </div>
+                <!-- Adding standard footer links -->
+                <div class="footer-col">
+                    <h3>Thông tin</h3>
+                    <ul><li><a href="#">Về chúng tôi</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Hỗ trợ</h3>
+                    <ul><li><a href="#">Hướng dẫn mua hàng</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Liên hệ</h3>
+                    <ul><li>support@minishop.vn</li></ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data/products.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Specific logic for products page sidebar highlighting
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchQuery = urlParams.get('q');
+            if (searchQuery) {
+                document.getElementById('searchInput').value = searchQuery;
+            }
+
+            const sidebarCategories = document.querySelectorAll('#sidebarCategoryList li');
+            sidebarCategories.forEach(li => {
+                li.addEventListener('click', () => {
+                    sidebarCategories.forEach(el => el.classList.remove('active'));
+                    li.classList.add('active');
+                    const category = li.getAttribute('data-category');
+                    
+                    // Filter using the existing data in products
+                    let filtered = products;
+                    if(category !== 'all') {
+                        filtered = filtered.filter(p => p.category === category);
+                    }
+                    if (searchQuery) {
+                        const lowerQ = searchQuery.toLowerCase();
+                        filtered = filtered.filter(p => p.name.toLowerCase().includes(lowerQ) || p.description.toLowerCase().includes(lowerQ));
+                    }
+                    
+                    const grid = document.getElementById('productsGrid');
+                    grid.innerHTML = '';
+                    filtered.forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.className = 'product-card';
+                        productCard.innerHTML = `
+                            <div class="badge-new">New</div>
+                            <button class="btn-wishlist"><i class="fa-regular fa-heart"></i></button>
+                            <img src="${product.image}" alt="${product.name}" class="product-img" onerror="this.src='https://via.placeholder.com/300?text=No+Image'" onclick="window.location.href='product-detail.html?id=${product.id}'" style="cursor:pointer;">
+                            <div class="product-info">
+                                <h3 class="product-name" onclick="window.location.href='product-detail.html?id=${product.id}'" style="cursor:pointer;">${product.name}</h3>
+                                <div class="product-price">${formatCurrency(product.price)}</div>
+                                <div class="stock-status">In stock</div>
+                                <button class="btn-detail" onclick="window.location.href='product-detail.html?id=${product.id}'">Detail &rarr;</button>
+                            </div>
+                        `;
+                        grid.appendChild(productCard);
+                    });
+                });
+            });
+            // Initial trigger
+            document.querySelector('#sidebarCategoryList li[data-category="all"]').click();
+        });
+    </script>
+</body>
+</html>

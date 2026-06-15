@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Mini Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .about-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: var(--radius-lg);
+            margin-top: 30px;
+        }
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .about-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            margin: 60px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .about-text h2 {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        .about-image img {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .core-values {
+            margin-bottom: 80px;
+        }
+        .core-values h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .value-card {
+            background: var(--bg-color);
+            padding: 40px 30px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+        .value-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .value-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        .value-card p {
+            color: var(--text-light);
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-bag-shopping"></i> Mini Shop
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="about.html" class="active">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-search">
+                <input type="text" id="searchInput" placeholder="Search products...">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-outline" onclick="window.location.href='login.html'">Login</button>
+                <button class="btn btn-primary" onclick="window.location.href='register.html'">Register</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <section class="about-hero">
+            <h1>Câu Chuyện Của Mini Shop</h1>
+            <p>Mang đến không gian sống hoàn hảo và tiện nghi cho hàng triệu gia đình Việt Nam.</p>
+        </section>
+
+        <section class="about-content">
+            <div class="about-text">
+                <h2>Khởi nguồn từ đam mê</h2>
+                <p>Thành lập từ năm 2020, Mini Shop bắt đầu với một ước mơ giản dị: cung cấp những sản phẩm nội thất và trang trí gia dụng chất lượng cao với mức giá phải chăng nhất.</p>
+                <p>Chúng tôi tin rằng, một tổ ấm đẹp không chỉ là nơi để ở, mà còn là nơi lưu giữ những khoảnh khắc hạnh phúc của gia đình. Chính vì thế, mỗi sản phẩm tại Mini Shop đều được tuyển chọn kỹ lưỡng, đảm bảo tính thẩm mỹ, độ bền và tính ứng dụng cao.</p>
+            </div>
+            <div class="about-image">
+                <img src="assets/images/banner/banner-trang-chu-mini-shop.jpg" alt="About Mini Shop">
+            </div>
+        </section>
+
+        <section class="core-values">
+            <h2>Giá trị cốt lõi</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fa-solid fa-gem"></i>
+                    <h3>Chất Lượng Vượt Trội</h3>
+                    <p>Cam kết mang đến những sản phẩm tốt nhất, an toàn cho sức khỏe và bền đẹp theo thời gian.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fa-solid fa-heart"></i>
+                    <h3>Tận Tâm Phục Vụ</h3>
+                    <p>Sự hài lòng của khách hàng là ưu tiên hàng đầu trong mọi quyết định của chúng tôi.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fa-solid fa-leaf"></i>
+                    <h3>Bền Vững</h3>
+                    <p>Hướng tới các sản phẩm thân thiện với môi trường, góp phần bảo vệ hành tinh xanh.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fa-solid fa-bag-shopping"></i> Mini Shop
+                    </div>
+                    <p class="footer-desc">Đồ dùng & trang trí cho cuộc sống tiện nghi và phong cách.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Thông tin</h3>
+                    <ul>
+                        <li><a href="about.html">Về chúng tôi</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Hỗ trợ khách hàng</h3>
+                    <ul>
+                        <li><a href="#">Hướng dẫn mua hàng</a></li>
+                        <li><a href="#">Thanh toán & giao hàng</a></li>
+                        <li><a href="#">Bảo hành & đổi trả</a></li>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-location-dot"></i> Hà Nội, Việt Nam</li>
+                        <li><i class="fa-solid fa-phone"></i> 0123 456 789</li>
+                        <li><i class="fa-solid fa-envelope"></i> support@minishop.vn</li>
+                        <li><i class="fa-regular fa-clock"></i> 08:00 - 21:00 (T2 - CN)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 Mini Shop. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="data/products.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

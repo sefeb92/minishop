@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Mini Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .contact-page {
+            background-color: #f5eedc; /* Beige background matched from image */
+            min-height: 100vh;
+        }
+        
+        .contact-header {
+            background: white; /* Keep header white for consistency */
+        }
+        
+        .contact-banner-container {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-bottom: 5px solid #4a5d23;
+            overflow: hidden;
+        }
+        .contact-banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            color: #333;
+        }
+        
+        .contact-info-block {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .contact-info-block h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #4a5d23;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .contact-info-block p {
+            font-size: 1.05rem;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .stores-section {
+            margin-top: 60px;
+        }
+        .stores-section h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #4a5d23;
+            margin-bottom: 30px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .region-group {
+            margin-bottom: 40px;
+        }
+        .region-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #555;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .store-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(74, 93, 35, 0.2);
+        }
+        .store-item:last-child {
+            border-bottom: none;
+        }
+        .store-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.95rem;
+            color: #333;
+        }
+        .store-info i {
+            color: #4a5d23;
+            font-size: 1.2rem;
+        }
+        
+        .btn-direction {
+            padding: 8px 20px;
+            border: 1px solid #4a5d23;
+            background: transparent;
+            color: #4a5d23;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            text-transform: uppercase;
+        }
+        .btn-direction:hover {
+            background: #4a5d23;
+            color: white;
+        }
+        
+        /* Custom Footer matching the image style */
+        .contact-footer {
+            background-color: #6b8045; /* Green color from image */
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: 40px;
+        }
+        .contact-footer a {
+            color: white;
+            transition: opacity 0.3s;
+        }
+        .contact-footer a:hover {
+            opacity: 0.8;
+            color: white;
+        }
+        .cf-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+        }
+        .cf-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .cf-links {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        .cf-links h4 {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+        .cf-links ul li {
+            margin-bottom: 8px;
+        }
+        .messenger-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #0084ff;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 1000;
+        }
+        @media (max-width: 768px) {
+            .cf-grid, .cf-links {
+                grid-template-columns: 1fr;
+            }
+            .store-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+
+        /* Banner Animation Styles */
+        .reveal-container {
+            position: relative;
+            width: 100%;
+            background-color: #f5eedc; /* Match page background */
+            overflow: hidden;
+            border-bottom: 5px solid #4a5d23;
+        }
+        
+        .reveal-content-layer {
+            position: relative;
+            width: 100%;
+            z-index: 1;
+            padding-bottom: 40px;
+        }
+
+        .reveal-banner-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+        
+        .reveal-banner-layer.wipe-out {
+            animation: bannerWipe 1.6s forwards ease-in-out;
+            animation-delay: 0.4s;
+        }
+        
+        .reveal-banner-layer.wipe-in {
+            animation: bannerWipeReverse 1.5s forwards ease-in-out;
+        }
+        
+        .reveal-img-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .reveal-leaf {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 120px;
+            color: #4a5d23;
+            z-index: 10;
+            cursor: pointer;
+            filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.4));
+        }
+        
+        .reveal-leaf i {
+            display: block;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .reveal-leaf:hover i {
+            transform: scale(1.35) rotate(10deg);
+        }
+
+        .reveal-leaf.run-away {
+            animation: leafSweep 2s forwards ease-in-out;
+            /* Remove pointer-events: none so it stays clickable at the edge */
+        }
+        
+        .reveal-leaf.run-back {
+            animation: leafSweepReverse 1.5s forwards ease-in-out;
+        }
+        
+        @keyframes leafSweep {
+            0% { left: 50%; }
+            20% { left: 0%; transform: translate(-50%, -50%) rotate(-45deg); }
+            100% { left: 100%; transform: translate(-50%, -50%) rotate(45deg); }
+        }
+        
+        @keyframes leafSweepReverse {
+            0% { left: 100%; transform: translate(-50%, -50%) rotate(45deg); }
+            100% { left: 50%; transform: translate(-50%, -50%) rotate(0deg); }
+        }
+        
+        @keyframes bannerWipe {
+            0% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+            100% { clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%); }
+        }
+
+        @keyframes bannerWipeReverse {
+            0% { clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%); }
+            100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+        }
+
+
+
+
+
+        .btn-search-address {
+            background-color: #4a5d23;
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-search-address:hover {
+            background-color: #38461a;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body class="contact-page">
+
+    <!-- Header -->
+    <header class="header contact-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-bag-shopping"></i> Mini Shop
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="active">Contact</a>
+            </nav>
+            <div class="header-search">
+                <input type="text" id="searchInput" placeholder="Search products...">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-outline" onclick="window.location.href='login.html'">Login</button>
+                <button class="btn btn-primary" onclick="window.location.href='register.html'">Register</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="reveal-container" id="reveal-container">
+        <!-- Lớp nền chứa toàn bộ thông tin liên hệ -->
+        <div class="reveal-content-layer">
+            <main class="contact-content">
+                <div class="contact-info-block">
+                    <h3>Email</h3>
+                    <p>support@minishop.vn</p>
+                </div>
+                
+                <div class="contact-info-block">
+                    <h3>Hotline</h3>
+                    <p>0123 456 789</p>
+                </div>
+                
+                <div class="stores-section" id="stores-section">
+                    <h3>Cửa hàng</h3>
+                    
+                    <div class="region-group">
+                        <div class="region-title">Khu vực Hà Nội</div>
+                        <div class="store-item">
+                            <div class="store-info">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>Mini Shop Cầu Giấy: 123 Xuân Thủy, Dịch Vọng Hậu, Cầu Giấy, HN</span>
+                            </div>
+                            <button class="btn-direction">Chỉ đường</button>
+                        </div>
+                        <div class="store-item">
+                            <div class="store-info">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>Mini Shop Đống Đa: 456 Thái Hà, Trung Liệt, Đống Đa, HN</span>
+                            </div>
+                            <button class="btn-direction">Chỉ đường</button>
+                        </div>
+                    </div>
+                    
+                    <div class="region-group">
+                        <div class="region-title">Khu vực TP. Hồ Chí Minh</div>
+                        <div class="store-item">
+                            <div class="store-info">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>Mini Shop Quận 1: 789 Nguyễn Huệ, Bến Nghé, Quận 1, TP. HCM</span>
+                            </div>
+                            <button class="btn-direction">Chỉ đường</button>
+                        </div>
+                        <div class="store-item">
+                            <div class="store-info">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>Mini Shop Gò Vấp: 101 Quang Trung, Phường 10, Gò Vấp, TP. HCM</span>
+                            </div>
+                            <button class="btn-direction">Chỉ đường</button>
+                        </div>
+                    </div>
+                    
+                    <div class="region-group">
+                        <div class="region-title">Khu vực Đà Nẵng</div>
+                        <div class="store-item">
+                            <div class="store-info">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>Mini Shop Hải Châu: 202 Lê Duẩn, Thạch Thang, Hải Châu, Đà Nẵng</span>
+                            </div>
+                            <button class="btn-direction">Chỉ đường</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Lớp trên: Banner image che phủ lớp nền -->
+        <div class="reveal-banner-layer" id="reveal-banner-layer">
+            <img src="assets/images/banner/banner-trang-chu-mini-shop.jpg" alt="Banner Trang Chủ" class="reveal-img-cover">
+        </div>
+        
+        <!-- Chiếc lá trigger ở giữa -->
+        <div class="reveal-leaf" id="reveal-leaf" onclick="toggleReveal()" title="Nhấn vào chiếc lá">
+            <i class="fa-solid fa-leaf"></i>
+        </div>
+    </div>
+    
+        <!-- Nội dung đã được di chuyển vào bên trong reveal-container ở trên -->
+
+    <!-- Custom Footer matching the Contact image -->
+    <footer class="contact-footer">
+        <div class="container cf-grid">
+            <div>
+                <div class="cf-logo">
+                    <i class="fa-solid fa-bag-shopping"></i> MINI SHOP
+                </div>
+                <p style="font-size: 0.9rem; margin-bottom: 20px;">Đồ dùng & trang trí cho cuộc sống tiện nghi.</p>
+                <div style="display:flex; gap:15px; font-size:1.2rem;">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="cf-links">
+                <div>
+                    <h4>Về chúng tôi</h4>
+                    <ul>
+                        <li><a href="about.html">Câu chuyện thương hiệu</a></li>
+                        <li><a href="#">Cơ hội nghề nghiệp</a></li>
+                        <li><a href="#">Tin tức</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Hỗ trợ khách hàng</h4>
+                    <ul>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                        <li><a href="#">Điều khoản dịch vụ</a></li>
+                        <li><a href="#">Phương thức thanh toán</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Messenger Float Icon -->
+    <div class="messenger-btn">
+        <i class="fa-brands fa-facebook-messenger"></i>
+    </div>
+
+    <script src="data/products.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        function toggleReveal() {
+            let leaf = document.getElementById('reveal-leaf');
+            let banner = document.getElementById('reveal-banner-layer');
+            
+            if (leaf.classList.contains('run-away')) {
+                // Nếu đang mở rèm -> Đóng lại (quay về ban đầu)
+                leaf.classList.remove('run-away');
+                banner.classList.remove('wipe-out');
+                
+                void leaf.offsetWidth; // Force reflow
+                
+                leaf.classList.add('run-back');
+                banner.classList.add('wipe-in');
+            } else {
+                // Nếu đang đóng rèm -> Mở ra
+                leaf.classList.remove('run-back');
+                banner.classList.remove('wipe-in');
+                
+                void leaf.offsetWidth; // Force reflow
+                
+                leaf.classList.add('run-away');
+                banner.classList.add('wipe-out');
+            }
+        }
+    </script>
+</body>
+</html>
