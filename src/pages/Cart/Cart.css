@@ -1,0 +1,294 @@
+.cart-page {
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+.cart-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-bottom: 30px;
+  color: var(--text-dark);
+  font-family: 'Playfair Display', 'EB Garamond', serif;
+  text-align: center;
+}
+
+.cart-title::after {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--border-color), transparent);
+  margin: 10px auto 0 auto;
+  opacity: 0.5;
+}
+
+.cart-layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.cart-items-section {
+  flex-grow: 1;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cart-table th {
+  text-align: left;
+  padding: 15px;
+  border-bottom: 2px solid var(--border-color);
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: 1rem;
+  font-family: 'EB Garamond', 'Noto Serif TC', serif;
+}
+
+.cart-table td {
+  padding: 20px 15px;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+.cart-item-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cart-item-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+  cursor: pointer;
+}
+
+.cart-item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cart-item-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: color 0.2s;
+  font-family: 'EB Garamond', 'Noto Serif TC', serif;
+}
+
+.cart-item-name:hover {
+  color: var(--cinnabar-red);
+}
+
+.cart-item-category {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: 'EB Garamond', serif;
+}
+
+.cart-price-cell {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-family: 'Playfair Display', 'EB Garamond', serif;
+  font-size: 1.05rem;
+}
+
+.cart-qty-control {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  width: max-content;
+  overflow: hidden;
+  height: 38px;
+  background: var(--scroll-bg);
+}
+
+.cart-qty-control button {
+  width: 32px;
+  height: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.cart-qty-control button:hover {
+  background: var(--bg-color);
+}
+
+.cart-qty-control input {
+  width: 36px;
+  text-align: center;
+  border: none;
+  font-weight: 600;
+  outline: none;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  background: transparent;
+}
+
+.cart-subtotal-cell {
+  font-weight: 700;
+  color: var(--cinnabar-red);
+  font-size: 1.1rem;
+  font-family: 'Playfair Display', 'EB Garamond', serif;
+}
+
+.btn-remove-item {
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+
+.btn-remove-item:hover {
+  color: var(--cinnabar-red);
+}
+
+.cart-summary-section {
+  width: 380px;
+  flex-shrink: 0;
+  background: var(--scroll-bg);
+  border-left: 2px solid var(--border-color);
+  border-right: 2px solid var(--border-color);
+  border-top: none;
+  border-bottom: none;
+  padding: 25px 30px;
+  position: sticky;
+  top: 100px;
+}
+
+.summary-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: var(--text-dark);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 15px;
+  font-family: 'Playfair Display', 'EB Garamond', serif;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: var(--text-light);
+  font-family: 'EB Garamond', 'Noto Serif TC', serif;
+  font-weight: 600;
+}
+
+.summary-row.total {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  border-top: 1px solid var(--border-color);
+  padding-top: 15px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  font-family: 'EB Garamond', 'Noto Serif TC', serif;
+}
+
+.summary-row.total span:last-child {
+  color: var(--cinnabar-red);
+  font-weight: 900;
+  font-family: 'Playfair Display', 'EB Garamond', serif;
+}
+
+.btn-checkout {
+  width: 100%;
+  height: 46px;
+  background: var(--jade-green) !important;
+  color: #fdfaf2 !important;
+  border: 1px solid #1b4332;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px !important;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 2px 3px 8px rgba(45, 106, 79, 0.2);
+  font-family: inherit;
+}
+
+.btn-checkout:hover {
+  background: #1b4332 !important;
+  transform: scale(1.02);
+}
+
+.cart-empty-state {
+  text-align: center;
+  padding: 60px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  font-family: 'EB Garamond', 'Noto Serif TC', serif;
+}
+
+.cart-empty-icon {
+  font-size: 4rem;
+  color: var(--cinnabar-red);
+  margin-bottom: 10px;
+}
+
+.cart-empty-state h2 {
+  font-family: 'Playfair Display', 'EB Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.cart-empty-state p {
+  color: var(--text-light);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.btn-continue-shopping {
+  padding: 12px 28px;
+  background: var(--jade-green) !important;
+  color: #fdfaf2 !important;
+  border: 1px solid #1b4332;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px !important;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 2px 3px 8px rgba(45, 106, 79, 0.2);
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.btn-continue-shopping:hover {
+  background: #1b4332 !important;
+  transform: scale(1.02);
+}
+
+@media (max-width: 992px) {
+  .cart-layout {
+    flex-direction: column;
+  }
+  .cart-summary-section {
+    width: 100%;
+    position: static;
+  }
+}

@@ -1,0 +1,205 @@
+.orders-page {
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+.orders-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-bottom: 30px;
+  color: var(--text-dark);
+  font-family: 'Playfair Display', 'EB Garamond', serif;
+  text-align: center;
+}
+
+.orders-title::after {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--border-color), transparent);
+  margin: 10px auto 0 auto;
+  opacity: 0.5;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.order-card {
+  /* Relies on scroll-vertical style */
+  background: var(--scroll-bg);
+  border-left: 2px solid var(--border-color);
+  border-right: 2px solid var(--border-color);
+  border-top: none;
+  border-bottom: none;
+  padding: 0 !important; /* Override standard padding */
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+
+.order-card::before,
+.order-card::after {
+  /* Override vertical scroll height for order cards specifically */
+  height: 10px !important;
+}
+
+.order-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.order-card-header {
+  background: rgba(90, 75, 56, 0.06);
+  padding: 20px 25px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.order-meta-info {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.order-meta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.order-meta-group label {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: 'EB Garamond', serif;
+}
+
+.order-meta-group span {
+  font-weight: 700;
+  color: var(--text-dark);
+  font-size: 1.05rem;
+  font-family: 'Playfair Display', 'EB Garamond', serif;
+}
+
+.order-status-badge {
+  padding: 6px 14px;
+  border-radius: 4px; /* Calligraphic stamp style */
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-block;
+  font-family: 'EB Garamond', 'Noto Serif TC', serif;
+  transform: rotate(-1deg);
+}
+
+.status-pending {
+  background: #fdfaf2;
+  color: #d97706;
+  border: 1px solid #d97706;
+}
+
+.status-processing {
+  background: #fdfaf2;
+  color: #2563eb;
+  border: 1px solid #2563eb;
+}
+
+.status-completed {
+  background: #fdfaf2;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.status-cancelled {
+  background: #fdfaf2;
+  color: var(--cinnabar-red);
+  border: 1px solid var(--cinnabar-red);
+}
+
+.order-card-body {
+  padding: 25px;
+}
+
+.order-items-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-items-table th {
+  text-align: left;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: 'EB Garamond', 'Noto Serif TC', serif;
+}
+
+.order-items-table td {
+  padding: 15px 0;
+  border-bottom: 1px dashed var(--border-color);
+  font-size: 1rem;
+  color: var(--text-dark);
+  font-family: 'EB Garamond', 'Noto Serif TC', serif;
+  font-weight: 600;
+}
+
+.order-items-table tr:last-child td {
+  border-bottom: none;
+}
+
+.order-item-desc {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-item-title {
+  font-weight: 700;
+}
+
+.order-card-footer {
+  padding: 20px 25px;
+  background: rgba(90, 75, 56, 0.03);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  font-family: 'EB Garamond', 'Noto Serif TC', serif;
+  font-weight: 600;
+}
+
+.orders-empty-state {
+  text-align: center;
+  padding: 60px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  font-family: 'EB Garamond', 'Noto Serif TC', serif;
+}
+
+.orders-empty-state h2 {
+  font-family: 'Playfair Display', 'EB Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.orders-empty-state p {
+  color: var(--text-light);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.orders-empty-icon {
+  font-size: 4rem;
+  color: var(--cinnabar-red);
+}

@@ -1,0 +1,160 @@
+.admin-orders-page {
+  padding: 10px 0;
+}
+
+.admin-orders-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: var(--text-dark);
+}
+
+.admin-orders-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+.admin-order-tab {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: var(--text-light);
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: all 0.2s;
+}
+
+.admin-order-tab:hover {
+  background: var(--bg-color);
+  color: var(--text-dark);
+}
+
+.admin-order-tab.active {
+  background: #e6f4ea;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.orders-table-wrapper {
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.admin-orders-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-orders-table th {
+  background: #f9fafb;
+  padding: 15px 20px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+
+.admin-orders-table td {
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+.admin-orders-table tr:hover td {
+  background-color: #fafafa;
+}
+
+.admin-order-row-expanded {
+  background-color: #fafafa;
+}
+
+.admin-order-row-expanded td {
+  padding: 25px 40px !important;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.admin-items-detail-card {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-items-detail-title {
+  font-weight: 700;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+.admin-action-btn-group {
+  display: flex;
+  gap: 8px;
+}
+
+.admin-order-btn {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-approve {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.btn-approve:hover {
+  background: #2563eb;
+  color: white;
+}
+
+.btn-complete {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.btn-complete:hover {
+  background: #059669;
+  color: white;
+}
+
+.btn-cancel {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.btn-cancel:hover {
+  background: #dc2626;
+  color: white;
+}
+
+.btn-toggle-detail {
+  background: #f3f4f6;
+  color: var(--text-dark);
+}
+
+.btn-toggle-detail:hover {
+  background: var(--border-color);
+}
+
+.admin-orders-empty {
+  padding: 50px;
+  text-align: center;
+  color: var(--text-light);
+}
