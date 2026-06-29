@@ -80,8 +80,31 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (name, email, password) => {
+    // 1. Nếu ở môi trường Production, gọi trực tiếp supabase signUp để kích hoạt xác thực email
+    if (!import.meta.env.DEV) {
+      try {
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: {
+              name,
+            }
+          }
+        });
+        
+        if (error) {
+          return { success: false, message: error.message || 'Đăng ký thất bại' };
+        }
+        
+        return { success: true };
+      } catch (prodErr) {
+        return { success: false, message: prodErr.message || 'Đăng ký thất bại' };
+      }
+    }
+
+    // 2. Chỉ chạy luồng bypass qua local proxy ở môi trường local development
     try {
-      // 1. Call local Vite dev server proxy to create user bypassing email confirm
       const res = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -94,7 +117,6 @@ export const AuthProvider = ({ children }) => {
         return { success: false, message: adminResult.message || 'Registration failed via local proxy' };
       }
       
-      // 2. Sign in as the newly created user
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password
@@ -106,7 +128,7 @@ export const AuthProvider = ({ children }) => {
       
       return { success: true };
     } catch (e) {
-      // Fallback to normal signup if the API proxy fails (e.g. in production)
+      // Dùng làm phương án dự phòng cuối cùng nếu local proxy bị lỗi cấu hình
       try {
         const { data, error } = await supabase.auth.signUp({
           email,
