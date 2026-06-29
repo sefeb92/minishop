@@ -119,7 +119,7 @@ export const AuthProvider = ({ children }) => {
         });
         
         if (error) {
-          return { success: false, message: error.message };
+          return { success: false, message: error.message || 'Đăng ký thất bại' };
         }
         
         return { success: true };

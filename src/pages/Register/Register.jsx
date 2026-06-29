@@ -37,7 +37,12 @@ const Register = () => {
     } else {
       let errMsg = 'Đăng ký thất bại. Vui lòng thử lại.';
       if (result.message) {
-        errMsg = typeof result.message === 'object' ? JSON.stringify(result.message) : String(result.message);
+        if (typeof result.message === 'object') {
+          // Lấy thuộc tính message của error object nếu có
+          errMsg = result.message.message || result.message.error_description || JSON.stringify(result.message);
+        } else {
+          errMsg = String(result.message);
+        }
       }
       setError(errMsg);
     }
