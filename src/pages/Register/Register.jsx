@@ -29,20 +29,25 @@ const Register = () => {
       return;
     }
     const result = await register(name, email, password);
-    if (result.success) {
+    if (result && result.success) {
       setSuccessMessage('Đăng ký tài khoản thành công! Vui lòng kiểm tra email của bạn để xác thực tài khoản trước khi đăng nhập.');
       setName('');
       setEmail('');
       setPassword('');
     } else {
       let errMsg = 'Đăng ký thất bại. Vui lòng thử lại.';
-      if (result.message) {
-        if (typeof result.message === 'object') {
-          // Lấy thuộc tính message của error object nếu có
+      if (result && result.message) {
+        if (typeof result.message === 'string') {
+          errMsg = result.message;
+        } else if (typeof result.message === 'object') {
           errMsg = result.message.message || result.message.error_description || JSON.stringify(result.message);
         } else {
           errMsg = String(result.message);
         }
+      }
+      // Nếu sau các bước xử lý lỗi vẫn là chuỗi chứa đối tượng rỗng hoặc rỗng, thay thế bằng thông báo mặc định
+      if (!errMsg || errMsg === '{}' || errMsg === 'null' || errMsg === 'undefined') {
+        errMsg = 'Đăng ký thất bại. Vui lòng kiểm tra lại kết nối mạng hoặc thông tin đăng ký.';
       }
       setError(errMsg);
     }
