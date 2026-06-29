@@ -8,6 +8,8 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   
+  const [successMessage, setSuccessMessage] = useState('');
+  
   const { register, user } = useAuth();
   const navigate = useNavigate();
 
@@ -20,13 +22,18 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+    setSuccessMessage('');
     if (!name || !email || !password) {
       setError('Vui lòng nhập đầy đủ thông tin.');
       return;
     }
     const result = await register(name, email, password);
     if (result.success) {
-      navigate('/login'); 
+      setSuccessMessage('Đăng ký tài khoản thành công! Vui lòng kiểm tra email của bạn để xác thực tài khoản trước khi đăng nhập.');
+      setName('');
+      setEmail('');
+      setPassword('');
     } else {
       setError(result.message || 'Đăng ký thất bại. Vui lòng thử lại.');
     }
@@ -37,6 +44,7 @@ const Register = () => {
       <div className="scroll-vertical" style={{ width: '100%', maxWidth: '400px', padding: '30px 25px', background: 'var(--scroll-bg)', borderLeft: '2px solid var(--border-color)', borderRight: '2px solid var(--border-color)', borderTop: 'none', borderBottom: 'none' }}>
         <h2 style={{ textAlign: 'center', marginBottom: '20px', fontFamily: "'Playfair Display', 'EB Garamond', serif", fontWeight: 900, fontSize: '1.8rem' }}>Đăng ký</h2>
         {error && <div style={{ color: 'var(--cinnabar-red)', marginBottom: '15px', textAlign: 'center', fontWeight: 'bold', fontFamily: "'EB Garamond', serif" }}>{error}</div>}
+        {successMessage && <div style={{ color: 'var(--ink-green, #2e7d32)', marginBottom: '15px', textAlign: 'center', fontWeight: 'bold', fontFamily: "'EB Garamond', serif" }}>{successMessage}</div>}
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
           <input 
             type="text" 
