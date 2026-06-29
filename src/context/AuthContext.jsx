@@ -107,21 +107,25 @@ export const AuthProvider = ({ children }) => {
       return { success: true };
     } catch (e) {
       // Fallback to normal signup if the API proxy fails (e.g. in production)
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: {
-            name,
+      try {
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: {
+              name,
+            }
           }
+        });
+        
+        if (error) {
+          return { success: false, message: error.message };
         }
-      });
-      
-      if (error) {
-        return { success: false, message: error.message };
+        
+        return { success: true };
+      } catch (signupErr) {
+        return { success: false, message: signupErr.message || 'Đăng ký thất bại' };
       }
-      
-      return { success: true };
     }
   };
 

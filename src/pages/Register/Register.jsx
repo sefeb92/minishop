@@ -35,7 +35,11 @@ const Register = () => {
       setEmail('');
       setPassword('');
     } else {
-      setError(result.message || 'Đăng ký thất bại. Vui lòng thử lại.');
+      let errMsg = 'Đăng ký thất bại. Vui lòng thử lại.';
+      if (result.message) {
+        errMsg = typeof result.message === 'object' ? JSON.stringify(result.message) : String(result.message);
+      }
+      setError(errMsg);
     }
   };
 
